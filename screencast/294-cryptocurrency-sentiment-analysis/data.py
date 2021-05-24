@@ -51,6 +51,11 @@ new_words = {
      'maintain': 1.0,          
      'pump': 1.9,
      'hot': 1.5,
+     'suicide': -4.0,
+     'hotline': -4.0, 
+     'cries' : -2.0,
+     'loss': -1.5,
      'drop': -2.5,
-     'rebound': 1.5,  
-     'crack': 2.5,}
+     'horrifying': -2.0,
+     'dump': -2.0, 
+     'packup': -1.0,}
