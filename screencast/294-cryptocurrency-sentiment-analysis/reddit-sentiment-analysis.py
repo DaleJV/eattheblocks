@@ -21,9 +21,9 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 start_time = time.time()
 reddit = praw.Reddit(
-    user_agent='Comment Extraction',
-    client_id='',
-    client_secret=''
+    user_agent='Sentiment Tracker 2.0',
+    client_id='TILn1CkwdIm97Q',
+    client_secret='hDH2YrHyK3vgH2XPnKB61mIfdHqTeQ'
 )
 
 '''############################################################################'''
