@@ -20,6 +20,7 @@ import squarify
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 start_time = time.time()
+print("Start time: ", start_time)
 reddit = praw.Reddit(
     user_agent='Sentiment Tracker 2.0',
     client_id='TILn1CkwdIm97Q',
@@ -44,22 +45,25 @@ picks_ayz = 5   # define # of picks for sentiment analysis
 
 posts, count, c_analyzed, tickers, titles, a_comments = 0, 0, 0, {}, [], {}
 cmt_auth = {}
-
+submissionsChecked = 0
 for sub in subs:
     subreddit = reddit.subreddit(sub)
     hot_python = subreddit.hot()    # sorting posts by hot
     # Extracting comments, symbols from subreddit
+
     for submission in hot_python:
-        # checking: post upvote ratio # of upvotes, post flair, and author 
-        if submission.title.startswith(submission_name):   
-            submission.comment_sort = 'new'     
+        if ((not (submissionsChecked >= 20)) | submission.title.startswith(submission_name)): 
+            print("\n\nSubmission being analysed\n", submission.title)
+            submissionsChecked = submissionsChecked + 1
+            # checking: post upvote ratio # of upvotes, post flair, and author 
+            submission.comment_sort = 'best'     
             comments = submission.comments
             titles.append(submission.title)
             posts += 1
             submission.comments.replace_more(limit=limit)   
             for comment in comments:
-                #print(comment.body)
-                #print(comment.score)
+                print("\n\nAnalysing comment\n",comment.body)
+                print("Score: ",comment.score)
                 # try except for deleted account?
                 try: auth = comment.author.name
                 except: pass
